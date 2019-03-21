@@ -1,0 +1,33 @@
+@import "../../utils/vars";
+
+.container{
+    width: 1000px / 1000px * 100%;
+    height: 72px / 2233px * 100%;
+    background-color: #2e2e2e;
+    @extend %centrar;
+
+    &__logo{
+        width: 176px / 1000px * 100%;
+        height: 2029px / 2233px * 100%;
+        font-size: 24px;
+        letter-spacing: 4px;
+        color: $color-redPink;
+        margin-right: 5%;
+    }
+
+    &__links{
+        width: 250px / 1000px * 100%;
+        @extend %centrar;
+        justify-content: space-between;
+
+        &__section{
+            text-decoration: none;
+            width: 63px;
+            height: 36px;
+            font-size: 15px;
+            line-height: 2.4;
+            letter-spacing: normal;
+            color:$color-whiteTwo;
+        }
+    }
+}

@@ -21,3 +21,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+src/components/NavBar/NavBar.css
+src/components/NavBar/NavBar.css.map
+src/components/Store/Store.css
+src/components/Store/Store.css.map
+src/index.css
+src/components/App/App.css
