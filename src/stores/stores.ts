@@ -1,4 +1,4 @@
-import { observable, autorun, toJS } from 'mobx';
+import { observable, autorun, toJS, action, computed } from 'mobx';
 
 import api from '../utils/api';
 
@@ -16,13 +16,23 @@ class Store {
     @observable categories : catsArray  | null | false = null;
 
     @observable currentDept: number  | null =  null;
+    @observable currentCat: number  | null =  null;
+
+    //@computed sirve para hacer que un valor que depende de otros se auto actualize
+    @computed get pageTitle(){
+        var dep = this.departments && this.departments.find(e => e.department_id == this.currentDept);
+        var cat = this.categories && this.categories.find(e => e.category_id == this.currentCat);
+
+        var res = `${dep ? dep.name : ''} ${cat ? ' - ' + cat.name : ''}`;
+        return res;
+    }
 
     constructor(){
         //this.departments = observable.box(null);
     }
 
     //Trae desde el api o desde el local storage los datos de los departamentos
-    getDepartments(){
+    @action getDepartments(){
         //La llamada al api es asincrona, por eso usamos este boolean que nos diga si una llamada ya esta en ejecucion
         if(this.loadingdeps)return;
 
@@ -48,7 +58,17 @@ class Store {
         api.getDepartments(callback);
     }
 
-    getCategories(){
+    @action setDepartment(id : number){
+        this.currentDept = id;
+        this.currentCat = null;
+    }
+
+    @action setCategorie(id : number){
+        this.currentCat = id;
+    }
+
+    //@action sirve para darle a una funcion la capacidad de modificar una variable observable
+    @action getCategories(){
         //Si ya existen las categorias, no hago llamada al api
         if(this.categories != null)return;
 

@@ -1,0 +1,19 @@
+.Filterscont{
+    &__tituloDeps{
+        &__dep{
+            color: gray;
+            &__active{
+                color: black;
+            }
+        }
+    }
+
+    &__tituloCats{
+        &__cat{
+            color: gray;
+            &__active{
+                color: black;
+            }
+        }
+    }
+}

@@ -26,4 +26,6 @@ src/components/NavBar/NavBar.css
 src/components/NavBar/NavBar.css.map
 src/components/Store/Store.css
 src/components/Store/Store.css.map
+src/components/Filters/Filters.css
+src/components/Filters/Filters.css.map
 src/index.css

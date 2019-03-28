@@ -5,10 +5,13 @@ import store from '../../stores/stores';
 
 const NavBar = () => {
     if (!store.departments) return <p>Cargando...</p>;
-
     return (
         <nav className="container">
             <h1 className="container__logo">SHOPMATE</h1>
+
+        {//aunque es una funcion,por ser @computed se comporta como una variable y la llamo como tal
+        }
+        <h1>{store.pageTitle}</h1>
 
             <div className="container__links">
                 {store.departments.map((dep) => {
