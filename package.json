@@ -11,6 +11,7 @@
     "mobx-react": "^5.4.3",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-mobx": "^0.0.4",
     "react-scripts": "2.1.8",
     "typescript": "3.3.4000"
   },

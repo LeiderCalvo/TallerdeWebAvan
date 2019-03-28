@@ -27,7 +27,12 @@
             font-size: 15px;
             line-height: 2.4;
             letter-spacing: normal;
-            color:$color-whiteTwo;
+            //color:$color-whiteTwo;
+            color: gray;
+
+            &__active{
+                color: black;
+            }
         }
     }
 }

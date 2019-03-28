@@ -4,7 +4,6 @@ import '../NavBar/NavBar.css';
 import store from '../../stores/stores';
 
 const NavBar = () => {
-    console.log(store.departments);
     if (!store.departments) return <p>Cargando...</p>;
 
     return (
@@ -13,10 +12,12 @@ const NavBar = () => {
 
             <div className="container__links">
                 {store.departments.map((dep) => {
-                    return <a className="container__links__section" key={dep.department_id}
-                        href={`/department/${dep.name}`}>
+                    return <div className={store.currentDept == dep.department_id? "container__links__section__active" : "container__links__section"} key={dep.department_id}
+                        onClick={() =>{
+                            store.currentDept = dep.department_id;
+                        }}>
                         {dep.name}
-                    </a>;
+                    </div>;
                 })}
             </div>
 

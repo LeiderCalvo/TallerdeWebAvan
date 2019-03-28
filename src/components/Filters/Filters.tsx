@@ -13,23 +13,25 @@ class Filters extends Component {
 
     render() {
         return <div>
-        <h3>{store.categories ? 'Departamentos' : 'Loading departments'}</h3>
+        <h3>{store.departments ? 'Departamentos' : 'Loading departments'}</h3>
         {
             store.departments && store.departments.map((dep) => {
-                return <a key={dep.department_id}
-                    href={`/department/${dep.name}`}>
-                    {dep.name}
-                </a>;
+                return <div className={store.currentDept == dep.department_id? "container__links__section__active" : "container__links__section"} key={dep.department_id}
+                onClick={() =>{
+                    store.currentDept = dep.department_id;
+                }}>
+                {dep.name}
+            </div>;
             })
         }
 
         <h3>{store.categories ? 'Categorias' : 'Loading categories'}</h3>
         {
             store.categories && store.categories.map((cat) => {
-                return <a key={cat.category_id}
+                return cat.department_id == store.currentDept && <a key={cat.category_id}
                     href={`/department/${cat.name}`}>
-                    {cat.name}
-                </a>;
+                    {cat.name}  
+                </a>
             })
         }
 
