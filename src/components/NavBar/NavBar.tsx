@@ -9,7 +9,7 @@ const NavBar = () => {
         <nav className="container">
             <h1 className="container__logo">SHOPMATE</h1>
 
-        {//aunque es una funcion,por ser @computed se comporta como una variable y la llamo como tal
+        {//aunque pageTitle es una funcion,por ser @computed se comporta como una variable y la llamo como tal
         }
         <h1>{store.pageTitle}</h1>
 
@@ -23,11 +23,6 @@ const NavBar = () => {
                     </div>;
                 })}
             </div>
-
-            {//<ShearBar/>
-                //<Cart/>
-            }
-
         </nav>
     );
 }

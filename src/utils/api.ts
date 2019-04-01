@@ -1,5 +1,6 @@
 import { depsArray, catsArray } from '../stores/stores'
 
+//Base de la URL a la que se debe llamar para acceder al API(Base de datos y sus peticiones)
 var apiRoot = 'https://backendapi.turing.com';
 
 function getDepartments(callback: (result: depsArray)=> void){
@@ -22,6 +23,7 @@ function getCategories(callback: (result: catsArray)=> void) {
         });
 }
 
+//Exportar por funciones
 export default {
     getDepartments,
     getCategories,

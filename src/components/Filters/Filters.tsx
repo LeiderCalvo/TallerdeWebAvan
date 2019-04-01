@@ -37,8 +37,6 @@ class Filters extends Component {
                 </div>
             })
         }
-
-        {/*<button onClick={this.props.onAdd}>Ver más</button>*/}
     </div>
     }
 }

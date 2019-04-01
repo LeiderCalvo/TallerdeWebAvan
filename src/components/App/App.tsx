@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <p>El bannersito que va aqui es un componente? Debe ser clikeable cada texto o es una imagen?</p>
+        <p>Aqui puede ir cualquier cosa que app renderice</p>
         <Store />
 
       </div>
