@@ -26,4 +26,25 @@
             }
         }
     }
+
+    &__sizes{
+        &__size{
+            &__active{
+                color: red;
+            }
+        }
+    }
+
+    &__dobleSlider{
+        width: 90%;
+        margin: 0 auto 20px;
+        text-align: center;
+
+        input{
+            //pointer-events: none;
+            //outline: none;
+            border-radius: 8px;
+            width: 40%;
+        }
+    }
 }

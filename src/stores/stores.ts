@@ -21,6 +21,7 @@ class Store {
     @observable currentDept: number  | null =  null;
     @observable currentCat: number  | null =  null;
     @observable currentColor: number  | null =  null;
+    @observable currentSize: number  | null =  null;
 
     //@computed sirve para hacer que un valor que depende de otros se auto actualize
     @computed get currentFilter(){
@@ -66,17 +67,21 @@ class Store {
 
 
 
-    @action setDepartment(id : number){
+    @action setDepartment(id : number | null){
         this.currentDept = id;
         this.currentCat = null;
     }
 
-    @action setCategorie(id : number){
+    @action setCategorie(id : number | null){
         this.currentCat = id;
     }
 
-    @action setColor(id : number){
+    @action setColor(id : number | null){
         this.currentColor = id;
+    }
+
+    @action setSize(id : number | null){
+        this.currentSize = id;
     }
 
 
