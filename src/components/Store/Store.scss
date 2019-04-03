@@ -1,0 +1,25 @@
+.StoreCont{
+    display: flex;
+    flex-direction: column;
+    &__cats{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        &__cat{
+            &__active{
+                color: red;
+            }
+        }
+    }
+
+    &__products{
+        display: flex;
+        flex-direction: row;
+
+        &__filters{
+            
+        }
+    }
+
+}

@@ -19,7 +19,6 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <p>Aqui puede ir cualquier cosa que app renderice</p>
         <Store />
 
       </div>

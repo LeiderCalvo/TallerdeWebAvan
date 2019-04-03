@@ -11,8 +11,6 @@ const NavBar = () => {
 
         {//aunque pageTitle es una funcion,por ser @computed se comporta como una variable y la llamo como tal
         }
-        <h1>{store.pageTitle}</h1>
-
             <div className="container__links">
                 {store.departments.map((dep) => {
                     return <div className={store.currentDept == dep.department_id? "container__links__section__active" : "container__links__section"} key={dep.department_id}

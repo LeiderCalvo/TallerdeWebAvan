@@ -9,34 +9,37 @@ class Filters extends Component {
     constructor(props: {}){
         super(props);
 
-        store.getCategories();
+        store.getColorValues();
+        store.getSizeValues();
     }
 
     render() {
         return <div className='Filterscont'>
-        <h3 className='Filterscont__tituloDeps'>{store.departments ? 'Departamentos' : 'Loading departments'}</h3>
-        {
-            store.departments && store.departments.map((dep) => {
-                return <div className={store.currentDept == dep.department_id? "Filterscont__tituloDeps__dep__active" : "Filterscont__tituloDeps__dep"} key={dep.department_id}
-                onClick={() =>{
-                    store.setDepartment(dep.department_id);
-                }}>
-                {dep.name}
-            </div>;
-            })
-        }
+        <h3 className='Filterscont__cantidad'>{store.departments && `Filter ${store.departments.length} items`}</h3>
+        <p>{store.currentFilter}</p>
+        <h3>Color</h3>
+        <div className='Filterscont__colors'>{
+            
+                store.colors && store.colors.map((color) => {
+                    return <div key={color.attribute_value_id} className={store.currentColor == color.attribute_value_id? "Filterscont__colors__color__active" : "Filterscont__colors__color__cat"}>
+                        <input type="checkbox" name={`${color.value}`}
+                        onClick={() =>{
+                            store.setColor(color.attribute_value_id);
+                        }}/>
+                        {color.value}
+                    </div>
+                })
+            
+        }</div>
+        <h3>size</h3>
+        <p>traer las size del api</p>
+        <h3>Price Range</h3>
+        <p>crear la barra de precio</p>
+        <h3>Brand</h3>
+        <p>Listado de marcas, desde el api</p>
 
-        <h3 className='Filterscont__tituloCats'>{store.categories ? 'Categorias' : 'Loading categories'}</h3>
-        {
-            store.categories && store.categories.map((cat) => {
-                return cat.department_id == store.currentDept && <div key={cat.category_id} className={store.currentCat == cat.category_id? "Filterscont__tituloCats__cat__active" : "Filterscont__tituloCats__cat"}
-                    onClick={() =>{
-                        store.setCategorie(cat.category_id);
-                    }}>
-                    {cat.name}  
-                </div>
-            })
-        }
+        <button>Appley</button>
+        <button>Clear all</button> 
     </div>
     }
 }

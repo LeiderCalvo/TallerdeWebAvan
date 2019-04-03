@@ -1,5 +1,7 @@
 .Filterscont{
-    &__tituloDeps{
+    background-color: antiquewhite;
+
+    &__cantidad{
         &__dep{
             color: gray;
             &__active{
@@ -13,6 +15,14 @@
             color: gray;
             &__active{
                 color: black;
+            }
+        }
+    }
+
+    &__colors{
+        &__color{
+            &__active{
+                color: red;
             }
         }
     }
