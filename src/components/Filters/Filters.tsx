@@ -31,6 +31,7 @@ class Filters extends Component {
                 })
             
         }</div>
+
         <h3>size</h3>
         <div className='Filterscont__sizes'>{
             

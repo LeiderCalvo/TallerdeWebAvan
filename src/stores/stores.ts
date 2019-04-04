@@ -6,6 +6,7 @@ import api from '../utils/api';
 export type depsArray = { name: String, department_id: number }[];
 export type catsArray = { name: String, category_id: number, department_id: number }[];
 export type valuesArray = { attribute_value_id: number, value: String}[];
+export type productsArray = { product_id: number, name: String, description: String, price: String, discounted_price: String, thumbnail: String}[];
 
 //Esta clase debe encargarse de hacer las llamadas al api
 class Store {
@@ -14,6 +15,7 @@ class Store {
     //En typeScript a cada variable se le debe definir su o sus tipos de dato
     @observable departments : depsArray | null  = null;
     @observable categories : catsArray  | null | false = null;
+    @observable products : productsArray  | null | false = null;
     @observable colors : valuesArray | null | false = null;
     @observable sizes : valuesArray | null | false = null;
     
@@ -157,6 +159,32 @@ class Store {
             //Meto los datos que llegaron al api, al localStorage para asi no volver a hacer la peticion
             localStorage.setItem('sizeValues', JSON.stringify(toJS(result)));
             localStorage.setItem('sizeValues-time', JSON.stringify(toJS(Date.now())));
+        });
+    }
+
+
+
+    @action getProducts(){
+        if(this.products != null)return;
+
+        var prodsValues = localStorage.getItem('prodsValues');
+        var prodsLocalTime = localStorage.getItem('prodsValues-time');
+
+        //Si existen datos en el localStorage y ademas llevan menos de 10 días, traemos los datos del localStorage
+        if(prodsValues && prodsLocalTime && Date.now() - JSON.parse(prodsLocalTime) < 10 * 24 * 60 * 60 * 1000){
+            this.products = JSON.parse(prodsValues);
+            return;
+        }
+
+        //Digo que una llamada al api fue echa
+        this.products = false;
+        api.getProducts((result : productsArray) => {
+            console.log('productos cargados', result);
+            this.products = result;
+
+            //Meto los datos que llegaron al api, al localStorage para asi no volver a hacer la peticion
+            localStorage.setItem('prodsValues', JSON.stringify(toJS(result)));
+            localStorage.setItem('prodsValues-time', JSON.stringify(toJS(Date.now())));
         });
     }
 }

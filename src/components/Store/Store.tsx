@@ -3,6 +3,7 @@ import Filters from '../Filters/Filters';
 import store from '../../stores/stores';
 import '../Store/Store.css';
 import { observer } from 'mobx-react';
+import Card from '../Card/Card';
 
 @observer
 class Store extends Component{
@@ -11,6 +12,7 @@ class Store extends Component{
         super(props);
 
         store.getCategories();
+        store.getProducts();
     }
 
     render(){
@@ -30,7 +32,13 @@ class Store extends Component{
 
             <div className="StoreCont__products">
                 <div className="StoreCont__products__filters"><Filters/></div>
-                <p>productos</p>
+                <div className='StoreCont__products__prods'>{
+                    store.products && store.products.map((p)=>{
+                        return <div key={p.product_id}>
+                                <Card product={p}/>
+                            </div>
+                    })
+                }</div>
             </div>
 
         </div>

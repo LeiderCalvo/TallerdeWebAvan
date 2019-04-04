@@ -28,4 +28,6 @@ src/components/Store/Store.css
 src/components/Store/Store.css.map
 src/components/Filters/Filters.css
 src/components/Filters/Filters.css.map
+src/components/Card/Card.css
+src/components/Card/Card.css.map
 src/index.css

@@ -1,4 +1,4 @@
-import { depsArray, catsArray, valuesArray } from '../stores/stores'
+import { depsArray, catsArray, valuesArray, productsArray } from '../stores/stores'
 
 //Base de la URL a la que se debe llamar para acceder al API(Base de datos y sus peticiones)
 var apiRoot = 'https://backendapi.turing.com';
@@ -39,9 +39,19 @@ function getAttributesValues(attribute_id: String, callback: (result: valuesArra
         });
 }
 
+function getProducts(callback: (result: productsArray)=> void){
+    fetch(`${apiRoot}/products`)
+        .then(( rawInfo )=>{
+            return rawInfo.json();
+        })
+        .then(( products )=>{
+            callback(products.rows);
+        });
+}
 //Exportar por funciones
 export default {
     getDepartments,
     getCategories,
     getAttributesValues,
+    getProducts,
 };
