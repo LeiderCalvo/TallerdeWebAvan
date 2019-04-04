@@ -20,14 +20,28 @@
     }
 
     &__colors{
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin: 1em;
+
         &__color{
+            margin-right: 2em;
+
             &__active{
                 color: red;
             }
         }
     }
-    
+
     &__sizes{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
         &__size{
             &__active{
                 color: red;

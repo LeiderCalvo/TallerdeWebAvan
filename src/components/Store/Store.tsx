@@ -34,7 +34,7 @@ class Store extends Component{
                 <div className="StoreCont__products__filters"><Filters/></div>
                 <div className='StoreCont__products__prods'>{
                     store.products && store.products.map((p)=>{
-                        return <div key={p.product_id}>
+                        return <div className='StoreCont__products__prods__cont' key={p.product_id}>
                                 <Card product={p}/>
                             </div>
                     })

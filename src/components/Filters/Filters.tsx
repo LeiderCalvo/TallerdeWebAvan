@@ -21,7 +21,7 @@ class Filters extends Component {
         <div className='Filterscont__colors'>{
             
                 store.colors && store.colors.map((color) => {
-                    return <div key={color.attribute_value_id} className={store.currentColor == color.attribute_value_id? "Filterscont__colors__color__active" : "Filterscont__colors__color__cat"}>
+                    return <div key={color.attribute_value_id} className={store.currentColor == color.attribute_value_id? "Filterscont__colors__color__active" : "Filterscont__colors__color"}>
                         <input type="checkbox" checked={store.currentColor == color.attribute_value_id? true : false} name={`${color.value}`}
                         onChange={() =>{
                             store.setColor(color.attribute_value_id);
