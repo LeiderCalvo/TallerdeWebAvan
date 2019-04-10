@@ -49,7 +49,12 @@ class Filters extends Component {
 
         <h3>Precio</h3>
         <div className='Filterscont__dobleSlider'>
-            <input min='0' max='100' step='0.5' type="range" name='rangoPrecio'/>
+            
+            <input min='0' max='100' step='0.5' type="range" name='rangoPrecio' onChange={()=>{
+                console.log("ofsuidufhosdifdsf",);
+                store.setRangeMin(1);
+            }}/>
+            
             <input min='0' max='100' step='0.5' type="range" name='rangoPrecio2'/>
         </div>
         

@@ -6,7 +6,7 @@ import api from '../utils/api';
 export type depsArray = { name: String, department_id: number }[];
 export type catsArray = { name: String, category_id: number, department_id: number }[];
 export type valuesArray = { attribute_value_id: number, value: String}[];
-export type productsArray = { product_id: number, name: String, description: String, price: String, discounted_price: String, thumbnail: String}[];
+export type productsArray = { product_id: number, name: String, description: String, price: String, discounted_price: String, thumbnail: String, color: number, size: number}[];
 
 //Esta clase debe encargarse de hacer las llamadas al api
 class Store {
@@ -24,6 +24,7 @@ class Store {
     @observable currentCat: number  | null =  null;
     @observable currentColor: number  | null =  null;
     @observable currentSize: number  | null =  null;
+    @observable currentRange: {min:number | null , max:number | null} =  {min : null, max: null};
 
     //@computed sirve para hacer que un valor que depende de otros se auto actualize
     @computed get currentFilter(){
@@ -84,6 +85,14 @@ class Store {
 
     @action setSize(id : number | null){
         this.currentSize = id;
+    }
+
+    @action setRangeMin(min : number | null){
+        this.currentRange.min = min;
+    }
+
+    @action setRangeMax(max : number | null){
+        this.currentRange.max = max;
     }
 
 
@@ -180,6 +189,12 @@ class Store {
         this.products = false;
         api.getProducts((result : productsArray) => {
             console.log('productos cargados', result);
+            result.map((p)=>{
+                p.color =  Math.floor(Math.random()*5);
+                p.size =  Math.floor(Math.random()*5);
+                return p;
+            });
+
             this.products = result;
 
             //Meto los datos que llegaron al api, al localStorage para asi no volver a hacer la peticion
