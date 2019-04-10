@@ -51,11 +51,12 @@ class Filters extends Component {
         <div className='Filterscont__dobleSlider'>
             
             <input min='12' max='22' step='0.5' type="range" name='rangoPrecio' onChange={()=>{
-                console.log("ofsuidufhosdifdsf",);
                 store.setRangeMin(13);
             }}/>
             
-            <input min='12' max='22' step='0.5' type="range" name='rangoPrecio2'/>
+            <input min='12' max='22' step='0.5' type="range" name='rangoPrecio2' onChange={()=>{
+                store.setRangeMax(18);
+            }}/>
         </div>
         
         {/* no el api de esto

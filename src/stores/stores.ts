@@ -6,7 +6,7 @@ import api from '../utils/api';
 export type depsArray = { name: String, department_id: number }[];
 export type catsArray = { name: String, category_id: number, department_id: number }[];
 export type valuesArray = { attribute_value_id: number, value: String}[];
-export type productsArray = { product_id: number, name: String, description: String, price: String, discounted_price: String, thumbnail: String, color: number, size: number}[];
+export type productsArray = { product_id: number, name: String, description: String, price: string, discounted_price: String, thumbnail: String, color: number, size: number}[];
 
 //Esta clase debe encargarse de hacer las llamadas al api
 class Store {
@@ -24,7 +24,7 @@ class Store {
     @observable currentCat: number  | null =  null;
     @observable currentColor: number  | null =  null;
     @observable currentSize: number  | null =  null;
-    @observable currentRange: {min:number | null , max:number | null} =  {min : null, max: null};
+    @observable currentRange: {min:number , max:number} =  {min : 0, max: 0};
 
     //@computed sirve para hacer que un valor que depende de otros se auto actualize
     @computed get currentFilter(){
@@ -35,7 +35,21 @@ class Store {
         return res;
     }
 
-
+    @computed get currentProducts(){
+        if(this.currentRange.min == 0 || this.currentRange.max == 0) return this.products;
+        var prod : any = [];
+        
+        for (let i = 0; i < 20; i++) {
+            const p = this.products? this.products[i] : null;
+            
+            console.log(p && p.color+"-"+this.currentColor+" "+p.size+"-"+this.currentSize);
+            if (p!= null && p.color == this.currentColor && p.size==this.currentSize && parseFloat(p.price) > this.currentRange.min && parseFloat(p.price) < this.currentRange.max) {
+                prod.push(p);       
+            }
+            
+        }
+        return prod;
+    }
 
     constructor(){
         //this.departments = observable.box(null);
@@ -87,11 +101,11 @@ class Store {
         this.currentSize = id;
     }
 
-    @action setRangeMin(min : number | null){
+    @action setRangeMin(min : number){
         this.currentRange.min = min;
     }
 
-    @action setRangeMax(max : number | null){
+    @action setRangeMax(max : number){
         this.currentRange.max = max;
     }
 
@@ -190,7 +204,7 @@ class Store {
         api.getProducts((result : productsArray) => {
             console.log('productos cargados', result);
             result.map((p)=>{
-                p.color =  Math.floor(Math.random()*5);
+                p.color =  Math.floor(Math.random()*9)+6;
                 p.size =  Math.floor(Math.random()*5);
                 return p;
             });
