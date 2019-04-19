@@ -17,6 +17,7 @@
 
     &__links{
         width: 250px / 1000px * 100%;
+        margin-right: 20px;
         @extend %centrar;
         justify-content: space-between;
 

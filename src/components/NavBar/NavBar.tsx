@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import '../NavBar/NavBar.css';
+import Bag from '../Bag/Bag';
+import Searcher from '../Searcher/Searcher';
 import store from '../../stores/stores';
 
 const NavBar = () => {
@@ -21,6 +23,10 @@ const NavBar = () => {
                     </div>;
                 })}
             </div>
+
+            <Searcher/>
+            <Bag/>
+            <p>{store.bag}</p>
         </nav>
     );
 }

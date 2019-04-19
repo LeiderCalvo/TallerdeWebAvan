@@ -1,5 +1,8 @@
 .Filterscont{
-    background-color: antiquewhite;
+    background-color: #2e2e2e;
+    height: 100%;
+    padding: 2px;
+    color: gray;
 
     &__cantidad{
         &__dep{
@@ -26,6 +29,7 @@
         flex-wrap: wrap;
         justify-content: flex-start;
         margin: 1em;
+        color: gray;
 
         &__color{
             margin-right: 2em;

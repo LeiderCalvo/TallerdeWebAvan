@@ -6,10 +6,11 @@ import api from '../utils/api';
 export type depsArray = { name: String, department_id: number }[];
 export type catsArray = { name: String, category_id: number, department_id: number }[];
 export type valuesArray = { attribute_value_id: number, value: String}[];
-export type productsArray = { product_id: number, name: String, description: String, price: string, discounted_price: String, thumbnail: String, color: number, size: number}[];
+export type productsArray = product[];
+export type product = { product_id: number, name: String, description: String, price: string, discounted_price: String, thumbnail: String, color: number, size: number};
 
 //Esta clase debe encargarse de hacer las llamadas al api
-class Store {
+class Store { 
 
     //mobx nos permite tener variables observadas, que notifican sus cambios automaticamente
     //En typeScript a cada variable se le debe definir su o sus tipos de dato
@@ -25,6 +26,9 @@ class Store {
     @observable currentColor: number  | null =  null;
     @observable currentSize: number  | null =  null;
     @observable currentRange: {min:number , max:number} =  {min : 0, max: 0};
+    @observable detalle: product | null =  null;
+    @observable bag: number =  0;
+    @observable carrito: productsArray = [];
 
     //@computed sirve para hacer que un valor que depende de otros se auto actualize
     @computed get currentFilter(){
@@ -107,6 +111,23 @@ class Store {
 
     @action setRangeMax(max : number){
         this.currentRange.max = max;
+    }
+
+    @action setBag(num : number){
+        this.bag = num;
+    }
+
+    @action setDetallle(product: product) {
+        //Meto los datos al localStorage para que persistan
+        localStorage.setItem('detalle', JSON.stringify(toJS(product)));
+        this.detalle = product;
+    }
+
+    @action addItem(){
+        if(this.detalle==null)return;s
+        
+        this.carrito.push(this.detalle);
+        console.log(this.carrito);
     }
 
 
@@ -215,6 +236,15 @@ class Store {
             localStorage.setItem('prodsValues', JSON.stringify(toJS(result)));
             localStorage.setItem('prodsValues-time', JSON.stringify(toJS(Date.now())));
         });
+    }
+
+    @action getDetalle(){
+        var detsLocal = localStorage.getItem('detalle');
+        if(detsLocal== null){
+            if(this.detalle == null)return null;
+        }else{
+            this.detalle = JSON.parse(detsLocal);
+        };
     }
 }
 

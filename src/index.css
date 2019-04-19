@@ -1,14 +1,56 @@
-body {
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,700,800,900");
+html, body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-} 
+.contenedor {
+  width: 50px;
+  height: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+}
+
+.Logo {
+  font-family: 'Montserrat', sans-serif;
+  color: #8a2be2;
+  font-size: 150%;
+}
+
+.inputSearch {
+  width: 0%;
+  margin: 0%;
+  padding: 0%;
+  height: 0%;
+  color: black;
+  display: inline;
+  border: none;
+  -webkit-transition: width 0.3s ease-out;
+  transition: width 0.3s ease-out;
+}
+
+.descolapsado {
+  -webkit-transition: width 0.3s ease-out;
+  transition: width 0.3s ease-out;
+  width: 100px;
+  height: 20px;
+  display: inline;
+  margin: 0 6%;
+  background-color: rgba(255, 255, 255, 0.096);
+}
+
+h3 {
+  font-size: 99%;
+}
+
+.imgSearch {
+  height: 99%;
+}
+/*# sourceMappingURL=index.css.map */
